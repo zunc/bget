@@ -60,7 +60,7 @@ public:
 			return 0;
 		}
 
-		FILE* fSrc = fopen(src.c_str(), "b");
+		FILE* fSrc = fopen(src.c_str(), "rb");
 		if (fSrc == NULL) {
 			perror("can't open");
 			fclose(fDst);
