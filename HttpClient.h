@@ -283,7 +283,7 @@ public:
 		if (rangeSection != "") {
 			cout << " -> Server support resume/multithread download" << endl;
 		} else {
-			cout << " -> Server don't support resume/multithread download" << endl;
+			cout << " -> Server doesn't support resume/multithread download" << endl;
 			return retFlag;
 		}
 		
@@ -367,7 +367,7 @@ public:
 		if (rangeSection != "") {
 			cout << " -> Server support resume download" << endl;
 		} else {
-			cout << " -> Server don't support resume download" << endl;
+			cout << " -> Server does not support resume download" << endl;
 			delete responseHeader;
 			return;
 		}
@@ -425,7 +425,7 @@ public:
 		HttpHeader responseHeader = HttpHeader(string(szHeader));
 		int httpCode = responseHeader.getHttpCode();
 		if (httpCode != 200) {
-			cout << "Can't download file: " << responseHeader.getHttpMessage() << endl;
+			cout << "Could download file: " << responseHeader.getHttpMessage() << endl;
 			client.CloseSocket();
 			return retFlag;
 		}
@@ -450,7 +450,7 @@ public:
 		of.open(sFilePath.c_str(), ios::out | ios::binary);
 
 		if (!of.is_open()) {
-			cout << "Can not open file for writing" << endl;
+			cout << "Could not open file for writing" << endl;
 			cout << endl;
 			client.CloseSocket();
 			return retFlag;
