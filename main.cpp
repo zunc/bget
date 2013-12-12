@@ -11,8 +11,6 @@
 #include <getopt.h>
 #include "HttpClient.h"
 
-#define VERSION 0.1
-
 static void show_help(void) {
 	const char *b = " [^-^] bget 0.1 - a multithread downloader\n" \
 		"usage:\n" \
@@ -38,20 +36,28 @@ int main(int argc, char **argv) {
 		/* {"resume",	no_argument,		0, 'r'}, */ 
 		{NULL, 0, NULL, 0}
 	};
-
+	
 	int option_index = 0;
-	while ((c = getopt_long(argc, argv, "td:",
+	while ((c = getopt_long(argc, argv, "ht:o:",
 			long_options, &option_index)) != -1) {
 		switch (c) {
 			case 't':
+				if (optarg == NULL) {
+					cout << "param: -t is NULL" << endl;
+					exit(EXIT_FAILURE);
+				}
 				nThread = atoi(optarg);
 				break;
 			case 'o':
+				if (optarg == NULL) {
+					cout << "param: -o is NULL" << endl;
+					exit(EXIT_FAILURE);
+				}
 				dst = strdup((const char*) optarg);
 				break;
 			case 'h':
 				show_help();
-				isErrorOpt = true;
+				exit(EXIT_FAILURE);
 				break;
 			/* case 'r':
 				isResumeDownload = true;
@@ -60,7 +66,7 @@ int main(int argc, char **argv) {
 				cout << "incorrect parameter, bye bye x,x" << endl;
 				cout << "\n>--- F1 for you" << endl;
 				show_help();
-				isErrorOpt = true;
+				exit(EXIT_FAILURE);
 				break;
 		}
 	}
@@ -92,6 +98,5 @@ int main(int argc, char **argv) {
 	if (retFlag) {
 		cout << "> Download success, goodbye :*" << endl;
 	}
-	//	cin.get();
 }
 

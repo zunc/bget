@@ -392,7 +392,7 @@ public:
 		delete responseHeader;
 	};
 
-	bool DownloadFileBasic(string sUrl, string dstDir) {
+	bool DownloadFileBasic(string sUrl, string dstFile) {
 		//--- basic download
 		// one request for get all: header, file content
 		bool retFlag = false;
@@ -423,17 +423,23 @@ public:
 
 		//--- get file
 		HttpHeader responseHeader = HttpHeader(string(szHeader));
-		if (responseHeader.getHttpCode() != 200) {
+		int httpCode = responseHeader.getHttpCode();
+		if (httpCode != 200) {
 			cout << "Can't download file: " << responseHeader.getHttpMessage() << endl;
 			client.CloseSocket();
 			return retFlag;
 		}
-
+		
 		string sContentLength = responseHeader.getValue("Content-Length");
 		string sContentType = responseHeader.getValue("Content-Type");
 		int contentLength = atoi(sContentLength.c_str());
-		string sFilePath = dstDir + sFileName;
-
+		string sFilePath = dstFile;
+		
+		if (contentLength <= 0) {
+			cout << "error. file contentLength == 0" << endl;
+			return retFlag;
+		}
+		
 		// print basic information
 		cout << "\tName: " << sFilePath << endl;
 		cout << "\tSize: " << sContentLength << endl;
