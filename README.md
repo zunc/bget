@@ -1,25 +1,25 @@
 bget
 ====
 
-Multi-thread downloader client
+Multi-thread downloader client<br>
 
-usage:
- -t,	 --thread=NUMBER	thread count (default = 5)
- -o,	 --output=FILE		destination of output file
- -h,	 --help			 	show help
+<b>usage:</b><br>
+ -t,	 --thread=NUMBER	thread count (default = 5)<br>
+ -o,	 --output=FILE		destination of output file<br>
+ -h,	 --help			show help<br>
 
-Example:
-khoai@khoai-pc$ ./bgeter http://wallpapers.wallbase.cc/rozne/wallpaper-2461463.jpg
---- File information
-	Name: wallpaper-2461463.jpg
-	Temp files: .btmp/wallpaper-2461463.jpg.partN
-	Size: 1279667
-	Type: image/jpeg
-
- -> Server support resume/multithread download
-Downloaded: .btmp/wallpaper-2461463.jpg.part3
-Downloaded: .btmp/wallpaper-2461463.jpg.part1
-Downloaded: .btmp/wallpaper-2461463.jpg.part2
-Downloaded: .btmp/wallpaper-2461463.jpg.part4
-Downloaded: .btmp/wallpaper-2461463.jpg.part0
+<b>Example:</b><br>
+>khoai@khoai-pc$ ./bgeter http://wallpapers.wallbase.cc/rozne/wallpaper-2461463.jpg<br>
+>--- File information<br>
+>	Name: wallpaper-2461463.jpg<br>
+>	Temp files: .btmp/wallpaper-2461463.jpg.partN<br>
+>	Size: 1279667<br>
+>	Type: image/jpeg<br>
+><br>
+> -> Server support resume/multithread download<br>
+>Downloaded: .btmp/wallpaper-2461463.jpg.part3<br>
+>Downloaded: .btmp/wallpaper-2461463.jpg.part1<br>
+>Downloaded: .btmp/wallpaper-2461463.jpg.part2<br>
+>Downloaded: .btmp/wallpaper-2461463.jpg.part4<br>
+>Downloaded: .btmp/wallpaper-2461463.jpg.part0<br>
 > Download success, goodbye :*
